@@ -472,35 +472,41 @@ function handleCartButtonVisibility() {
    const cartButton = document.querySelector('.card__addCart_btn[attr="addCart"]');
    const sizeModal = document.querySelector('[modal-id="modal-plawkaSize"]');
 
-   if (!cartButton || !sizeModal) return;
+   if (!cartButton || !sizeModal) {
+      return;
+   }
 
-   let isInitialLoad = true;
-   let lastScrollY = window.scrollY;
+   sizeModal.classList.remove('_show');
+
+   function isInInitialPosition() {
+      const buttonRect = cartButton.getBoundingClientRect();
+      return buttonRect.top > 0;
+   }
+
 
    const observer = new IntersectionObserver(
       (entries) => {
          entries.forEach((entry) => {
-         if (isInitialLoad) {
-            sizeModal.classList.remove('_show');
-            isInitialLoad = false;
-            return;
-         }
+            const isIntersecting = entry.isIntersecting;
+            const inInitialPosition = isInInitialPosition();
 
-         const isButtonNotVisible = !entry.isIntersecting;
-         const currentScrollY = window.scrollY;
-         const isScrollingDown = currentScrollY > lastScrollY;
+            // console.log("isIntersecting:", isIntersecting);
+            // console.log("isInInitialPosition:", inInitialPosition);
 
-         if (isButtonNotVisible && isScrollingDown) {
-            sizeModal.classList.add('_show');
-         } else {
-            sizeModal.classList.remove('_show');
-         }
-
-         lastScrollY = window.scrollY;
+            if (!isIntersecting && !inInitialPosition) {
+               sizeModal.classList.add('_show');
+               // console.log("Adding _show class");
+            } else {
+               sizeModal.classList.remove('_show');
+               // console.log("Removing _show class");
+            }
          });
       },
-      { threshold: 0 }
+      {
+         threshold: 0,
+      }
    );
+
 
    observer.observe(cartButton);
 }

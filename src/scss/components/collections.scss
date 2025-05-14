@@ -300,6 +300,8 @@
   .choose__size_wrap {
     flex-direction: column;
     gap: $size-12;
+    padding-top: $size-16;
+    padding-bottom: $size-16;
 
     & .plawka__price {
       display: flex;
