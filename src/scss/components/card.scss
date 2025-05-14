@@ -182,6 +182,8 @@
   }
   .slider__wrap {
     gap: 30px;
+    position: $static;
+    top: $unset;
   }
 }
 

@@ -1158,6 +1158,8 @@ a {
   }
   .slider__wrap {
     gap: 30px;
+    position: static;
+    top: unset;
   }
 }
 @media screen and (max-width: 900px) {
