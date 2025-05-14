@@ -19,7 +19,8 @@ const initSwiper = () => {
          loop: true,
          direction: 'vertical',
          slidesPerView: 5,
-         freeMode: true,
+         freeMode: false,
+         slideToClickedSlide: true,
          pagination: false,
          navigation: false,
       });
@@ -162,36 +163,25 @@ const toggleModal = () => {
    const removeAllModals = () => {
       modals.forEach(modal => safelyRemoveClass(modal, showClass));
       removeBlur();
-      safelyRemoveClass(html, overflowHiddenClass);
+      // safelyRemoveClass(html, overflowHiddenClass);
       safelyRemoveClass(body, overflowHiddenClass);
    };
 
    buttons.forEach(button => {
       button.addEventListener("click", () => {
-         console.log(`Button clicked: ${button.dataset.modal}`);
 
          removeAllModals();
 
          const modalId = button.dataset.modal;
-         console.log(`Modal ID to open: ${modalId}`);
 
          const modal = document.querySelector(`[modal-id="${modalId}"]`);
-
-         if (modal) {
-         console.log(`Modal element found:`, modal);
-         } else {
-         console.warn(`Modal element not found with modal-id: ${modalId}`);
-         }
 
          safelyAddClass(modal, showClass);
 
          if (modal && modal.classList.contains(showClass)) {
-         console.log(`Modal "${modalId}" is now visible. Applying blur.`);
-         applyBlur();
-         safelyAddClass(html, overflowHiddenClass);
-         safelyAddClass(body, overflowHiddenClass);
-         } else {
-         console.warn(`Modal "${modalId}" failed to show or doesn't exist. Blur not applied.`);
+            applyBlur();
+            // safelyAddClass(html, overflowHiddenClass);
+            safelyAddClass(body, overflowHiddenClass);
          }
       });
    });
@@ -392,3 +382,42 @@ function makeButtonFollowCursor() {
    });
 }
 makeButtonFollowCursor();
+
+function handleCartButtonVisibility() {
+   const cartButton = document.querySelector('.card__addCart_btn[attr="addCart"]');
+   const sizeModal = document.querySelector('[modal-id="modal-plawkaSize"]');
+
+   if (!cartButton || !sizeModal) return;
+
+   let isInitialLoad = true;
+   let lastScrollY = window.scrollY;
+
+   const observer = new IntersectionObserver(
+      (entries) => {
+         entries.forEach((entry) => {
+         if (isInitialLoad) {
+            sizeModal.classList.remove('_show');
+            isInitialLoad = false;
+            return;
+         }
+
+         const isButtonNotVisible = !entry.isIntersecting;
+         const currentScrollY = window.scrollY;
+         const isScrollingDown = currentScrollY > lastScrollY;
+
+         if (isButtonNotVisible && isScrollingDown) {
+            sizeModal.classList.add('_show');
+         } else {
+            sizeModal.classList.remove('_show');
+         }
+
+         lastScrollY = window.scrollY;
+         });
+      },
+      { threshold: 0 }
+   );
+
+   observer.observe(cartButton);
+}
+
+handleCartButtonVisibility();
