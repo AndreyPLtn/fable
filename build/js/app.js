@@ -129,6 +129,7 @@ const toggleModal = () => {
    const main = document.querySelector(".main");
    const footer = document.querySelector(".footer");
    const modals = document.querySelectorAll("._modal");
+   const overlays = document.querySelectorAll("._overlay");
    const html = document.querySelector('html');
    const body = document.querySelector('body');
 
@@ -136,15 +137,15 @@ const toggleModal = () => {
    const blurClass = "_blur";
    const overflowHiddenClass = "_overflowHidden";
 
-   const safelyRemoveClass = (element, className) => {
-      if (element) {
-         element.classList.remove(className);
+   const safelyRemoveClass = (el, cn) => {
+      if (el) {
+         el.classList.remove(cn);
       }
    };
 
-   const safelyAddClass = (element, className) => {
-      if (element) {
-         element.classList.add(className);
+   const safelyAddClass = (el, cn) => {
+      if (el) {
+         el.classList.add(cn);
       }
    };
 
@@ -198,6 +199,20 @@ const toggleModal = () => {
    closeButtons.forEach(button => {
       button.addEventListener("click", () => {
          removeAllModals();
+      });
+   });
+
+   document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+         removeAllModals();
+      }
+   });
+
+   overlays.forEach(overlay => {
+      overlay.addEventListener("click", (e) => {
+         if (e.target === overlay) {
+            removeAllModals();
+         }
       });
    });
 };
