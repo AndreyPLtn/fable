@@ -2,6 +2,11 @@ body {
    background-color: #f6f6f6;
 }
 
+html._overflowHidden,
+body._overflowHidden {
+  overflow: hidden;
+}
+
 .collapse:not(.collapse_show) {
    display: none;
 }

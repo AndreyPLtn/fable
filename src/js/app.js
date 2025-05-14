@@ -129,9 +129,12 @@ const toggleModal = () => {
    const main = document.querySelector(".main");
    const footer = document.querySelector(".footer");
    const modals = document.querySelectorAll("._modal");
+   const html = document.querySelector('html');
+   const body = document.querySelector('body');
 
    const showClass = "_show";
    const blurClass = "_blur";
+   const overflowHiddenClass = "_overflowHidden";
 
    const safelyRemoveClass = (element, className) => {
       if (element) {
@@ -158,19 +161,36 @@ const toggleModal = () => {
    const removeAllModals = () => {
       modals.forEach(modal => safelyRemoveClass(modal, showClass));
       removeBlur();
+      safelyRemoveClass(html, overflowHiddenClass);
+      safelyRemoveClass(body, overflowHiddenClass);
    };
 
    buttons.forEach(button => {
       button.addEventListener("click", () => {
+         console.log(`Button clicked: ${button.dataset.modal}`);
+
          removeAllModals();
 
          const modalId = button.dataset.modal;
+         console.log(`Modal ID to open: ${modalId}`);
+
          const modal = document.querySelector(`[modal-id="${modalId}"]`);
+
+         if (modal) {
+         console.log(`Modal element found:`, modal);
+         } else {
+         console.warn(`Modal element not found with modal-id: ${modalId}`);
+         }
 
          safelyAddClass(modal, showClass);
 
          if (modal && modal.classList.contains(showClass)) {
+         console.log(`Modal "${modalId}" is now visible. Applying blur.`);
          applyBlur();
+         safelyAddClass(html, overflowHiddenClass);
+         safelyAddClass(body, overflowHiddenClass);
+         } else {
+         console.warn(`Modal "${modalId}" failed to show or doesn't exist. Blur not applied.`);
          }
       });
    });
@@ -181,7 +201,6 @@ const toggleModal = () => {
       });
    });
 };
-
 toggleModal();
 
 const accordion = () => {
@@ -296,3 +315,65 @@ const handleFashionItemClick = () => {
    });
 };
 handleFashionItemClick();
+
+function makeButtonFollowCursor() {
+   const sliderWraps = document.querySelectorAll('.main__slider_wrap');
+
+   sliderWraps.forEach(sliderWrap => {
+      const followButton = sliderWrap.querySelector('.main__showModal_btn[attr="hoveredPlus"]');
+
+      if (!followButton) {
+         return;
+      }
+
+      let isFollowing = false;
+
+      function handleMove(event) {
+         if (!isFollowing) return;
+
+         let x, y;
+
+         if (event.type === 'touchmove') {
+         x = event.touches[0].clientX;
+         y = event.touches[0].clientY;
+         } else {
+         x = event.clientX;
+         y = event.clientY;
+         }
+
+         const rect = sliderWrap.getBoundingClientRect();
+         const buttonWidth = followButton.offsetWidth;
+         const buttonHeight = followButton.offsetHeight;
+
+         const maxX = rect.right - buttonWidth / 2;
+         const minX = rect.left + buttonWidth / 2;
+         const maxY = rect.bottom - buttonHeight / 2;
+         const minY = rect.top + buttonHeight / 2;
+
+         const clampedX = Math.max(minX, Math.min(x, maxX));
+         const clampedY = Math.max(minY, Math.min(y, maxY));
+
+         followButton.style.left = (clampedX - rect.left - buttonWidth / 2) + 'px';
+         followButton.style.top = (clampedY - rect.top - buttonHeight / 2) + 'px';
+      }
+
+      function handleMouseEnter() {
+         isFollowing = true;
+         followButton.style.opacity = 1;
+      }
+
+      function handleMouseLeave() {
+         isFollowing = false;
+         followButton.style.opacity = 0;
+      }
+
+      sliderWrap.addEventListener('mouseenter', handleMouseEnter);
+      sliderWrap.addEventListener('mouseleave', handleMouseLeave);
+
+      sliderWrap.addEventListener('mousemove', handleMove);
+      sliderWrap.addEventListener('touchmove', handleMove);
+      sliderWrap.addEventListener('touchstart', handleMouseEnter);
+      sliderWrap.addEventListener('touchend', handleMouseLeave);
+   });
+}
+makeButtonFollowCursor();

@@ -20,6 +20,8 @@
   justify-content: space-between;
   gap: 80px;
   overflow: $hidden;
+  position: $sticky;
+  top: 0;
 
   ._side-slider {
     max-width: 77px;
@@ -59,6 +61,14 @@
   
     & .main__slider_wrap {
       position: $relative;
+
+      &:hover {
+
+        & .main__showModal_btn {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
   
       & img {
         object-fit: $contain;
@@ -125,7 +135,9 @@
   background-color: $color-fff;
   top: 153px;
   right: 146px;
-  transition: all 0.2s $ease; 
+  opacity: 0;
+  pointer-events: $none;
+  // transition: all 0.2s $ease; 
 
   & span {
     --proc: 50%;
@@ -155,12 +167,7 @@
     }
   }
 
-  &:hover {
-    background-color: $color-d9d9d9;
-  }
-
   &:active {
-    background-color: $color-fff;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(0, 0, 0, 0.2);
   }
 }

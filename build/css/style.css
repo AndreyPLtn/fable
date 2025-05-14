@@ -224,6 +224,11 @@ body {
   background-color: #f6f6f6;
 }
 
+html._overflowHidden,
+body._overflowHidden {
+  overflow: hidden;
+}
+
 .collapse:not(.collapse_show) {
   display: none;
 }
@@ -1023,6 +1028,8 @@ a {
           justify-content: space-between;
   gap: 80px;
   overflow: hidden;
+  position: sticky;
+  top: 0;
 }
 .slider__wrap ._side-slider {
   max-width: 77px;
@@ -1051,6 +1058,10 @@ a {
 }
 .slider__wrap ._main-slider .main__slider_wrap {
   position: relative;
+}
+.slider__wrap ._main-slider .main__slider_wrap:hover .main__showModal_btn {
+  opacity: 1;
+  pointer-events: all;
 }
 .slider__wrap ._main-slider .main__slider_wrap img {
   -o-object-fit: contain;
@@ -1100,8 +1111,8 @@ a {
   background-color: #ffffff;
   top: 153px;
   right: 146px;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
 }
 .main__showModal_btn span {
   --proc: 50%;
@@ -1133,11 +1144,7 @@ a {
   background-color: inherit;
   border-radius: var(--br);
 }
-.main__showModal_btn:hover {
-  background-color: #d9d9d9;
-}
 .main__showModal_btn:active {
-  background-color: #ffffff;
   -webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(0, 0, 0, 0.2);
           box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -3019,6 +3026,10 @@ a {
 }
 ._fullImage_content {
   max-height: 600px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .hidden__fullImage_swipper_wrap {
@@ -3169,4 +3180,28 @@ a {
 }
 .fullImage__show_more_btn:hover::before {
   background-color: #000000;
+}
+
+@media screen and (max-width: 900px) {
+  .hidden__fullImage_swipper_wrap {
+    display: none;
+  }
+  .hidden__fullImage_header {
+    position: static;
+    padding-bottom: 24px;
+  }
+  .hidden__fullImage_header .hidden__fullImage_title {
+    padding-bottom: 0;
+  }
+  .fullImage__overflow {
+    max-height: calc(100vh - 90px);
+  }
+}
+@media screen and (max-width: 600px) {
+  .hidden__fullImage_header .modal__close {
+    --size: 20px;
+  }
+  .hidden__fullImage_wrap {
+    padding: 20px;
+  }
 }

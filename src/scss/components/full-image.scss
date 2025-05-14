@@ -1,5 +1,6 @@
 ._fullImage_content  {
   max-height: 600px;
+  flex-direction: row;
 }
 
 .hidden__fullImage_swipper_wrap {
@@ -169,5 +170,36 @@
     &::before {
       background-color: $color-000;
     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .hidden__fullImage_swipper_wrap {
+    display: $none;
+  }
+
+  .hidden__fullImage_header {
+    position: static;
+    padding-bottom: $size-24;
+
+    & .hidden__fullImage_title  {
+      padding-bottom: 0;
+    }
+  }
+
+  .fullImage__overflow {
+    max-height: calc(100vh - 90px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hidden__fullImage_header {
+    & .modal__close {
+      --size: 20px;
+    }
+  }
+
+  .hidden__fullImage_wrap {
+    padding: $size-20;
   }
 }
