@@ -1,0 +1,35 @@
+.bredcrumbs__wrap {
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: $size-32;
+  padding-bottom: $size-32;
+  gap: $size-2;
+
+  &__item {
+    display: flex;
+
+    &:not(:last-child) {
+      &:after {
+        content: "/";
+        margin-left: $size-2;
+        color: $color-8e8e8e;
+      }
+    }
+  }
+}
+
+.breadcrumbs__link {
+  color: $color-8e8e8e;
+  font-size: $size-12;
+  font-family: var(--font-family);
+  text-transform: $uppercase;
+}
+
+@media screen and (max-width: 1024px) {
+  .breadcrumbs__link {
+    font-size: $size-10;
+  }
+}

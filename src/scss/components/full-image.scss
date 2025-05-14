@@ -1,0 +1,173 @@
+._fullImage_content  {
+  max-height: 600px;
+}
+
+.hidden__fullImage_swipper_wrap {
+  max-width: 484px;
+
+  & .fullImage_arrows {
+    --size: 35px;
+    border-radius: 100%;
+    background-color: rgba(76, 76, 76, 0.4);
+    width: var(--size);
+    height: var(--size);
+    min-width: var(--size);
+    min-height: var(--size);
+    max-width: var(--size);
+    max-height: var(--size);
+    transition: all 0.2s $ease;
+
+    & svg {
+      --width: 10px;
+      --height: 17px;
+      width: var(--width);
+      height: var(--height);
+      min-width: var(--width);
+      min-height: var(--height);
+      max-width: var(--width);
+      max-height: var(--height);
+      & path {
+        width: 100%;        
+        stroke: $color-eee;
+      }
+    }
+
+    &::after {
+      display: $none;
+    }
+
+    &.__prev {
+
+    }
+
+    &.__next {
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      background-color: rgba(76, 76, 76, 0.7);
+    }
+
+    &:active {
+      background-color: rgba(76, 76, 76, 1);
+    }
+  }
+}
+
+.fullImage__slider_wrap {
+  --maxHeight: 600px;
+  width: 100%;
+  height: 100%;
+  max-height: var(--maxHeight);
+
+  & img {
+    max-height: var(--maxHeight);
+    object-fit: $contain;
+  }
+}
+
+.hidden__fullImage_wrap {
+  padding: $size-30;
+  position: $relative;
+  width: 100%;
+}
+
+.hidden__fullImage_header {
+  position: $absolute;
+  right: $size-30;
+  top: $size-30;
+  padding-bottom: 0;
+}
+
+.hidden__fullImage_body {
+  overflow: $hidden;
+}
+
+.fullImage__overflow {
+  overflow: $hidden $auto;
+  max-height: 540px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.fullImage__list {
+  gap: $size-12;
+
+  & .fullImage__item {
+    gap: $size-20;
+  }
+}
+
+.fullImage__item_img {
+  --width: 140px;
+  --height: 150px;
+  background-color: $color-f6f6f6;
+  width: var(--width);
+  height: var(--height);
+  min-width: var(--width);
+  min-height: var(--height);
+  max-width: var(--width);
+  max-height: var(--height);
+
+  & img {
+
+  }
+}
+
+.fullImage__item_details {
+  gap: $size-8;
+}
+
+.fullImage__colors_wrap {
+
+  & .fullImage__colors_list {
+    gap: $size-4;
+  }
+
+  & .card__color_label {
+    --border-size: 16px;
+    padding: $size-2;
+
+    &::after {
+      --circle: 10px;
+    }
+  }
+}
+
+.fullImage__price {
+  font-family: var(--second-family);
+
+  & span {
+    padding-left: $size-4;
+    text-decoration: line-through;
+    color: $color-8e8e8e;
+  }
+}
+
+.fullImage__show_more_btn {
+  font-size: $size-12;
+  font-family: var(--second-family);
+  color: $color-8e8e8e;
+  position: $relative;
+  transition: all 0.2s $ease;
+
+  &::before {
+    content: '';
+    position: $absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: $color-8e8e8e;
+    transition: all 0.2s $ease;
+  }
+
+  &:hover {
+    color: $color-000;
+    &::before {
+      background-color: $color-000;
+    }
+  }
+}

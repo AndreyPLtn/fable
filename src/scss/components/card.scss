@@ -1,0 +1,245 @@
+.card__section {
+
+}
+
+.card__wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.slider__wrap {
+  --swiper-size: 660px;
+  max-width: 867px;
+  width: 100%;
+  max-height: var(--swiper-size);
+  min-height: var(--swiper-size);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 80px;
+  overflow: $hidden;
+
+  ._side-slider {
+    max-width: 77px;
+    width: 100%;
+    max-height: var(--swiper-size);
+    min-height: var(--swiper-size);
+  
+    & .swiper-slide {  
+      &.swiper-slide-active {
+        & .side__slider_wrap {
+          border-bottom: 1px solid $color-000;
+        }
+      }
+    }
+  
+    .side__slider_wrap {
+      cursor: $pointer;
+      width: 100%;
+      max-height: 112px;
+      min-height: 112px;
+      height: 100%;
+  
+      & img {
+        object-fit: $contain;
+        padding-bottom: 2px;
+      }
+    }
+  }
+
+  ._main-slider {
+      max-height: var(--swiper-size);
+      min-height: var(--swiper-size);
+
+    & .swiper-slide {
+  
+    }
+  
+    & .main__slider_wrap {
+      position: $relative;
+  
+      & img {
+        object-fit: $contain;
+        max-height: var(--swiper-size);
+        min-height: var(--swiper-size);
+      }
+    }
+
+    & ._main_swipper_btns {
+      --width: 13px;
+      --height: 24px;
+      width: var(--width);
+      height: var(--height);
+      min-width: var(--width);
+      min-height: var(--height);
+      max-width: var(--width);
+      max-height: var(--height);
+
+      &.main-swiper-button-next {
+        transform: rotate(180deg);
+      }
+      
+      & svg {        
+        & path {
+          transition: all 0.2s $ease;
+        }
+      }
+
+      &::after {
+        display: $none;
+      }
+
+      &:hover {
+        & svg {
+        
+          & path {
+            stroke: $color-000;
+          }
+        }
+      }
+
+      &:active {
+        & svg {
+        
+          & path {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main__showModal_btn {
+  --size: 34px;
+  min-width: var(--size);
+  max-width: var(--size);
+  width: var(--size);
+  min-height: var(--size);
+  max-height: var(--size);
+  height: var(--size);
+  position: $absolute;
+  padding: 9px;
+  background-color: $color-fff;
+  top: 153px;
+  right: 146px;
+  transition: all 0.2s $ease; 
+
+  & span {
+    --proc: 50%;
+    --proc-neg: -50%;
+    --br: 2px;
+    --width: 12px;
+    --height: 2px;
+    position: $absolute;
+    top: var(--proc);
+    left: var(--proc);
+    transform: translate(var(--proc-neg), var(--proc-neg));
+    width: var(--width);
+    height: var(--height);
+    background-color: $color-000;
+    border-radius: var(--br);
+
+    &::before {
+      content: '';
+      position: $absolute;
+      top: var(--proc);
+      left: var(--proc);
+      transform: translate(var(--proc-neg), var(--proc-neg)) rotate(90deg);
+      width: var(--width);
+      height: var(--height);
+      background-color: inherit;
+      border-radius: var(--br);
+    }
+  }
+
+  &:hover {
+    background-color: $color-d9d9d9;
+  }
+
+  &:active {
+    background-color: $color-fff;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+  .card__wrap {
+    flex-direction: column;
+  }
+  .slider__wrap {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .main__showModal_btn {
+    right: 5%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__options_wrap {
+    width: 100%;
+  }
+
+  .card__wrap {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .slider__wrap {
+    flex-direction: column;
+    max-height: 100%;
+    min-height: 100%;
+    gap: 0;
+
+    & ._side-slider {
+      padding-top: 15px;
+      max-width: 100%;
+      max-height: 70px;
+      min-height: 70px;
+      order: 1;
+
+      & .swiper-slide {
+        // width: 34px!important;
+      }
+
+      & .side__slider_wrap {
+        max-height: 50px;
+        min-height: 50px;
+        min-width: 34px;
+        max-width: 34px;
+      }
+    }
+
+    & ._main-slider {
+        max-height: 536px;
+        min-height: 100%;
+        max-width: 100%;
+
+      & .main__slider_wrap {
+        
+        & img {
+          max-height: 536px;
+          min-height: 100%;
+        }
+      }
+    }
+  }
+
+  .main__showModal_btn {
+    top: 50px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  
+}

@@ -1,0 +1,129 @@
+.hidden__gift_form {
+  gap: 24px;
+}
+
+.gift__input_field {
+
+  &.__line {
+
+    & label {
+      color: $color-8e8e8e;
+    }
+  }
+
+  &.__example {
+    background-color: $color-f7f7f7;
+    padding: $size-16;
+  }
+
+  &.__checkbox {
+
+    & label {
+      gap: $size-8;
+      position: $relative;
+      transition: all 0.2s $ease;
+
+      &::before {
+        --size: 20px;
+        content: '';
+        display: inline-flex;
+        width: var(--size);
+        height: var(--size);
+        min-width: var(--size);
+        max-width: var(--size);
+        min-height: var(--size);
+        max-height: var(--size);
+        border: 1px solid $color-8e8e8e;
+        transition: all 0.2s $ease;
+      }
+
+      &::after {
+        content: '';
+        position: $absolute;
+        top: 3px;
+        left: 7.5px;
+        width: 6px;
+        height: 12px;
+        transform: rotate(45deg) scale(0);
+        border: solid $color-000;
+        border-width: 0 2px 2px 0;
+        transition: all 0.2s $ease;
+      }
+
+      &:hover {
+        &::before {
+          border-color: $color-000;
+        }
+      }   
+    }
+
+    & .gift__checkbox {
+    position: $relative;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked ~ label {
+      &::before {
+        border-color: $color-000;
+      }
+
+      &::after {
+          transform: rotate(45deg) scale(1);
+        }
+      }
+    }
+  }
+}
+
+
+
+.gitf__input {
+  padding: 9px 0;
+  font-family: var(--font-family);
+  border-bottom: 1px solid $color-d9d9d9;
+  transition: all 0.2s $ease;
+
+  &:hover,
+  &:focus {
+    border-color: $color-000;
+  }
+
+  &::placeholder {
+    font-family: var(--font-family);
+  }
+}
+
+.gift__button_field {
+
+}
+
+.gift__send_btn {
+  width: 100%;
+  text-align: justify;
+  font-size: $size-14;
+  font-family: var(--second-family);
+  padding: 11px $size-20;
+  border: 1px solid $color-8e8e8e;
+  transition: all 0.2s $ease;
+
+  &:hover {
+    border-color: $color-000;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .gift__input_field {
+    &.__line {
+      &  label {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .gitf__input {
+    padding: 7px 0;
+  }
+  
+}
+

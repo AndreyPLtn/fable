@@ -1,0 +1,38 @@
+@include font-face("kinetika_regular", "kinetika_regular", 400);
+@include font-face("sf_compact_display_regular", "sf_compact_display_regular", 400);
+@include font-face("sf_pro_display_regular", "sf_pro_display_regular", 400);
+@include font-face("mulish_regular", "mulish_regular", 400);
+@include font-face("sf_pro_text_bold", "sf_pro_text_bold", 400);
+@include font-face("TT_Drugs_Trial_Black", "TT_Drugs_Trial_Black", 400);
+@include font-face("TT_Drugs_Trial_Black_Italic", "TT_Drugs_Trial_Black_Italic", 400);
+@include font-face("Play_Regular", "Play_Regular", 400);
+
+:root {
+  --font-family: "kinetika_regular", sans-serif;
+  --second-family: "Play_Regular", sans-serif;
+  --third-family: "sf_pro_text_bold", sans-serif;
+  --font3: "sf_compact_display_regular", sans-serif;
+  --font4: "sf_pro_display_regular", sans-serif;
+  --font5: "mulish_regular", sans-serif;
+}
+
+._font {
+  &_family {
+    font-family: var(--font-family);
+  }
+  &_second {
+    font-family: var(--second-family);
+  }
+  &_third {
+    font-family: var(--third-family);
+  }
+  &_3 {
+    font-family: var(--font3);
+  }
+  &_4 {
+    font-family: var(--font4);
+  }
+  &_5 {
+    font-family: var(--font5);
+  }
+}

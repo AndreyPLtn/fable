@@ -1,0 +1,284 @@
+@use "sass:map";
+
+// Define variables for common values
+$flex-display: (
+  webkit: -webkit-flex,
+  ms: -ms-flexbox,
+  default: flex
+);
+
+$flex-directions: (
+  row: row,
+  column: column,
+  row-reverse: row-reverse,
+  column-reverse: column-reverse
+);
+
+$align-items: (
+  stretch: stretch,
+  center: center,
+  flex-start: flex-start,
+  flex-end: flex-end
+);
+
+$justify-content: (
+  flex-start: flex-start,
+  center: center,
+  flex-end: flex-end,
+  space-between: space-between,
+  space-around: space-around
+);
+
+// Base mixin for flexbox
+@mixin flexbox() {
+  display: map.get($flex-display, webkit); // Safari < 9
+  display: map.get($flex-display, ms);    // IE 10
+  display: map.get($flex-display, default);
+}
+
+// Mixin for flex-direction
+@mixin flex-direction($direction: row) {
+  -webkit-flex-direction: map.get($flex-directions, $direction); // Safari < 9
+  -ms-flex-direction: map.get($flex-directions, $direction);     // IE 10
+  flex-direction: map.get($flex-directions, $direction);
+}
+
+// Mixin for align-items
+@mixin align-items($align: stretch) {
+  -webkit-align-items: map.get($align-items, $align); // Safari < 9
+  -ms-flex-align: map.get($align-items, $align);     // IE 10
+  align-items: map.get($align-items, $align);
+}
+
+// Mixin for justify-content
+@mixin justify-content($justify: flex-start) {
+  -webkit-justify-content: map.get($justify-content, $justify); // Safari < 9
+  -ms-flex-pack: map.get($justify-content, $justify);          // IE 10
+  justify-content: map.get($justify-content, $justify);
+}
+
+// Mixin for flex-wrap
+@mixin flex-wrap($wrap: nowrap) {
+  -webkit-flex-wrap: $wrap;  // Safari < 9
+  -ms-flex-wrap: $wrap;      // IE 10
+  flex-wrap: $wrap;
+}
+
+// Helper classes
+._flex {
+  @include flexbox();
+}
+
+._flex_col {
+  @include flexbox();
+  @include flex-direction(column);
+}
+
+._flex_col_center {
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(center);
+}
+
+._flex_col_end {
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(flex-end);
+}
+
+._flex_col_start {
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(flex-start);
+}
+
+._flex_col_sb {
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(space-between);
+}
+
+._flex_center {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+}
+
+._flex_al_center {
+  @include flexbox();
+  @include align-items(center);
+}
+
+._flex_sb {
+  @include flexbox();
+  @include justify-content(space-between);
+}
+
+._flex_sb_center {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+}
+
+._flex_sb_end {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(flex-end);
+}
+
+._flex_sb_start {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(flex-start);
+}
+
+._flex_sb_stretch {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(stretch);
+}
+
+._flex_al_end {
+  @include flexbox();
+  @include align-items(flex-end);
+}
+
+._flex_al_start {
+  @include flexbox();
+  @include align-items(flex-start);
+}
+
+._flex_end {
+  @include flexbox();
+  @include justify-content(flex-end);
+}
+
+._flex_start {
+  @include flexbox();
+  @include justify-content(flex-start);
+}
+
+._flex_stretch {
+  @include flexbox();
+  @include align-items(stretch);
+}
+
+._flex_stretch_center {
+  @include flexbox();
+  @include align-items(stretch);
+  @include justify-content(center);
+}
+
+._flex_stretch_sb {
+  @include flexbox();
+  @include align-items(stretch);
+  @include justify-content(space-between);
+}
+
+._wrap {
+  @include flexbox();
+  @include flex-wrap(wrap);
+}
+
+._flex_row_reverse {
+  @include flexbox();
+  @include flex-direction(row-reverse);
+}
+
+._flex_col_reverse {
+  @include flexbox();
+  @include flex-direction(column-reverse);
+}
+
+._flex_center_start {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(flex-start);
+}
+
+._flex_center_end {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(flex-end);
+}
+
+._flex_center_sb {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+}
+
+._flex_end_sb {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(flex-end);
+}
+
+._flex_center_sa {
+  @include flexbox();
+  @include justify-content(space-around);
+  @include align-items(center);
+}
+
+._flex_start_center {
+  @include flexbox();
+  @include justify-content(flex-start);
+  @include align-items(center);
+}
+
+._flex_end_center {
+  @include flexbox();
+  @include justify-content(flex-end);
+  @include align-items(center);
+}
+
+._flex_sa {
+  @include flexbox();
+  @include justify-content(space-around);
+}
+
+._flex_sa_center {
+  @include flexbox();
+  @include justify-content(space-around);
+  @include align-items(center);
+}
+
+._flex_sa_end {
+  @include flexbox();
+  @include justify-content(space-around);
+  @include align-items(flex-end);
+}
+
+._flex_sa_start {
+  @include flexbox();
+  @include justify-content(space-around);
+  @include align-items(flex-start);
+}
+
+._wrap_reverse {
+  flex-wrap: wrap-reverse;
+}
+
+._wrap {
+  flex-wrap: wrap;
+}
+
+._nowrap {
+  flex-wrap: nowrap;
+}
+
+._flex_grow {
+  flex-grow: 1;
+}
+
+._flex_shrink {
+  flex-shrink: 1;
+}
+
+._flex_basis_auto {
+  flex-basis: auto;
+}
+
+._flex_basis_0 {
+  flex-basis: 0;
+}

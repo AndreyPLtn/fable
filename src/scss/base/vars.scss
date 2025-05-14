@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use 'sass:math';
+
+$tablet: 1024px;
+$mobile: 568px;
+
+$transparent: transparent;
+$color-8e8e8e: #8e8e8e;
+$color-d9d9d9: #d9d9d9;
+$color-e8e8e8: #e8e8e8;
+$color-000: #000000;
+$color-0025: rgba(0, 0, 0, 0.25);
+$color-fff: #ffffff;
+$color-eee: #eeeeee;
+$color-0fba7d: #0fba7d;
+$color-0eba7d: #0eba7d;
+$color-042137: #042137;
+$color-4c531f: #4c531f;
+$color-032688: #032688;
+$color-f8975f: #f8975f;
+$color-f89760: #f89760;
+$color-f7f7f7: #f7f7f7;
+$color-f6f6f6: #f6f6f6;
+
+
+$auto: auto;
+$none: none;
+
+$hidden: hidden;
+$visible: visible;
+$ellipsis: ellipsis;
+
+$unset: unset;
+$relative: relative;
+$absolute: absolute;
+$fixed: fixed;
+$sticky: sticky;
+
+$block: block;
+
+$ease: ease;
+$ease-in: ease-in;
+$ease-out: ease-out;
+$ease-in-out: ease-in-out;
+$linear: linear;
+
+$cover: cover;
+$contain: contain;
+
+$center: center;
+$left: left;
+$right: right;
+$top: top;
+$bottom: bottom;
+
+$uppercase: uppercase;
+$lowercase: lowercase;
+$capitalize: capitalize;
+
+$pointer: pointer;
