@@ -473,6 +473,11 @@
   padding: $size-30 $size-30 $size-30 $size-50;
 }
 
+._fullscreen-slider {
+  max-width: calc(100% - 4px);
+  flex: 1;
+}
+
 .fullscreen__img_slider_wrap {
   width: 100%;
   height: 100%;
@@ -485,6 +490,37 @@
     top: $size-40;
     right: $size-50;
     position: $absolute;
+    z-index: 1;
+  }
+
+  & .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: $size-12 $size-40;
+    margin-bottom: $size-12;
+  }
+
+  & .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0;
+    --width: 13px;
+    --height: 2px;
+    opacity: 1;
+    background-color: $color-d9d9d9;
+    width: var(--width);
+    height: var(--height);
+    min-width: var(--width);
+    min-height: var(--height);
+    max-width: var(--width);
+    max-height: var(--height);
+    border-radius: 0;
+    transition: all 0.2s linear;
+
+    &.swiper-pagination-bullet-active {
+      --width: 32px;
+      background-color: $color-8e8e8e;
+    }
   }
 }
 
@@ -518,8 +554,7 @@
 }
 
 .map__show_list_btn,
-.inStock__plawka_btn,
-.fullscreen__img_pagination {
+.inStock__plawka_btn {
   display: $none;
 }
 
@@ -799,36 +834,15 @@
     display: $none;;
   }
 
-  .fullscreen__img_pagination {
-    display: flex;
-    width: 100%;
-    padding: $size-12 $size-24;
-    margin-bottom: $size-12;
-    gap: $size-4;
-
-    & .fullscreen__img_pagination_btn {
-      --width: 13px;
-      --height: 2px;
-      background-color: $color-d9d9d9;
-      width: var(--width);
-      height: var(--height);
-      min-width: var(--width);
-      min-height: var(--height);
-      max-width: var(--width);
-      max-height: var(--height);
-      transition: all 0.2s $ease;
-
-
-      &._current {
-        --width: 32px;
-        background-color: $color-8e8e8e;
-      }
-    }
-  }
-
   .fullscreen__img_slider_wrap {
     flex-direction: column!important;
     gap: $size-4;
+  }
+
+  .fullscreen__img_slider_wrap {
+    & .swiper-pagination {
+      position: $static!important;
+    } 
   }
 }
 

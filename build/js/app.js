@@ -54,26 +54,67 @@ try {
    fashionSwiper = new Swiper('._fashion-slider', {
       loop: true,
       slidesPerView: "auto",
-      // freeMode: true,
       spaceBetween: 20,
       pagination: false,
       centerMode: false,
       slideToClickedSlide: true,
-      // slidesPerView: 1,
       navigation: {
          nextEl: '.fashion__arrow_wrap .swiper-button-next',
          prevEl: '.fashion__arrow_wrap .swiper-button-prev',
       },
+      keyboard: {
+         enabled: true,
+         onlyInViewport: true,
+      },
+      mousewheel: {
+         forceToAxis: true,
+      },
       breakpoints: {
          600: {
-            navigation: false,
+         navigation: false,
+         keyboard: false,
+         mousewheel: false,
          },
          1024: {
-            navigation: true,
+         navigation: true,
+         keyboard: true,
+         mousewheel: true,
          },
       }
    });
+} catch (error) {
+   console.error('Error initializing Fashion Swiper:', error);
+}
 
+let fullscreenImages;
+try {
+   fullscreenImages = new Swiper('._fullscreen-slider', {
+      loop: false,
+      slidesPerView: 1,
+      spaceBetween: 2,
+      navigation: false,
+      pagination: {
+         el: '.swiper-pagination',
+         clickable: true,
+         bulletActiveClass: 'swiper-pagination-bullet-active',
+      },
+      allowSlidePrev: true,
+      allowSlideNext: true,
+      grabCursor: true,
+      simulateTouch: true,
+      breakpoints: {
+         600: {
+         pagination: {
+            enabled: false,
+         },
+         },
+         0: {
+         pagination: {
+            enabled: true,
+         }
+         }
+      },
+   });
 } catch (error) {
    console.error('Error initializing Main Swiper:', error);
 }
@@ -131,7 +172,7 @@ const toggleModal = () => {
    const footer = document.querySelector(".footer");
    const modals = document.querySelectorAll("._modal");
    const overlays = document.querySelectorAll("._overlay");
-   const html = document.querySelector('html');
+   // const html = document.querySelector('html');
    const body = document.querySelector('body');
 
    const showClass = "_show";
@@ -205,7 +246,40 @@ const toggleModal = () => {
          }
       });
    });
+
+   const handleSmallScreenModal = () => {
+      const sliderWrap = document.querySelector(".main__slider_wrap[data-modal='modal-fullscreenSliderImage']");
+      const modal = document.querySelector("[modal-id='modal-fullscreenSliderImage']");
+
+      if (!sliderWrap || !modal) return;
+
+      const addModalClasses = () => {
+         safelyAddClass(modal, showClass);
+         applyBlur();
+         safelyAddClass(body, overflowHiddenClass);
+      };
+
+      const removeModalClasses = () => {
+         safelyRemoveClass(modal, showClass);
+         removeBlur();
+         safelyRemoveClass(body, overflowHiddenClass);
+      };
+
+      if (window.innerWidth <= 600) {
+         sliderWrap.addEventListener("click", () => {
+            removeAllModals();
+         });
+      } else {
+         sliderWrap.removeEventListener("click", () => {});
+
+         removeModalClasses();
+      }
+   };
+
+   handleSmallScreenModal();
+   window.addEventListener("resize", handleSmallScreenModal);
 };
+
 toggleModal();
 
 const accordion = () => {
@@ -316,6 +390,17 @@ const handleFashionItemClick = () => {
          if (!hiddenInfo) return;
 
          toggleVisibility(button, hiddenInfo, container);
+      });
+   });
+
+   document.addEventListener('click', (e) => {
+      containers.forEach(container => {
+         const isClickInsideContainer = container.contains(e.target);
+         const isClickInsideInfo = e.target.closest(selectors.info);
+
+         if (!isClickInsideContainer && !isClickInsideInfo) {
+         removeActiveStates(container);
+         }
       });
    });
 };
