@@ -204,7 +204,7 @@
   --width: 34px;
   --height: 34px;
   background-color: $color-fff;
-  padding: 9px;
+  padding: 7px 9px;
   width: var(--width);
   height: var(--height);
   min-width: var(--width);
@@ -224,7 +224,6 @@
 
   &:hover {
     --width: 188px;
-    --height: 38px;
 
     & span {
       display: flex;
