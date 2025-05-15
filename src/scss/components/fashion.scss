@@ -60,22 +60,6 @@
   & .swiper-slide {
     width: $auto;
     flex-shrink: 0;
-
-    &.swiper-slide-active {      
-      & .fashion__current_slide_link {
-        --width: 188px;
-        --height: 38px;
-        pointer-events: all;
-
-        & span {
-          display: flex;
-        }
-      }
-
-      & .fashion__btn {
-        pointer-events: all;
-      }
-    }
   }
 }
 
@@ -195,7 +179,7 @@
   max-width: var(--size);
   max-height: var(--size);
   opacity: 0.7;
-  pointer-events: $none;
+  pointer-events: all;
   transition: all 0.2s $ease;
   
   & img {
@@ -229,15 +213,19 @@
   max-height: var(--height);
   gap: $size-6;
   border-radius: 100px;
-  pointer-events: $none;
   transition: drop-shadow 0.2s $ease;
 
   & span {
     display: $none;
     color: $color-000;
+    font-size: $size-14;
+    font-family: var(--second-family);
   }
 
   &:hover {
+    --width: 188px;
+    --height: 38px;
+
     & span {
       display: flex;
       word-break: keep-all;

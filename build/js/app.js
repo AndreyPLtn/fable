@@ -55,9 +55,11 @@ try {
       loop: true,
       slidesPerView: "auto",
       spaceBetween: 20,
-      pagination: false,
       centerMode: false,
-      slideToClickedSlide: true,
+      navigation: true,
+      keyboard: true,
+      mousewheel: true,
+      // slideToClickedSlide: true,
       navigation: {
          nextEl: '.fashion__arrow_wrap .swiper-button-next',
          prevEl: '.fashion__arrow_wrap .swiper-button-prev',
@@ -70,16 +72,16 @@ try {
          forceToAxis: true,
       },
       breakpoints: {
-         600: {
-         navigation: false,
-         keyboard: false,
-         mousewheel: false,
-         },
-         1024: {
-         navigation: true,
-         keyboard: true,
-         mousewheel: true,
-         },
+         // 600: {
+         //    navigation: false,
+         //    keyboard: false,
+         //    mousewheel: false,
+         // },
+         // 1024: {
+         //    navigation: true,
+         //    keyboard: true,
+         //    mousewheel: true,
+         // },
       }
    });
 } catch (error) {
@@ -123,12 +125,15 @@ let fullImageSwiper;
 try {
    fullImageSwiper = new Swiper('._fullImage-slider', {
       loop: true,
-      pagination: true,
       slidesPerView: 1,
       navigation: {
          nextEl: '._fullImage-slider .__next',
          prevEl: '._fullImage-slider .__prev',
       },
+      pagination: {
+         el: '.swiper-pagination._fullImage-pagination',
+         type: 'fraction',
+      }
    });
 
 } catch (error) {
