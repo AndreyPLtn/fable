@@ -90,7 +90,8 @@
       align-self: flex-start;
 
       & span {
-        font-size: var(--fs-14);
+        font-size: $size-14;
+        color: $color-000;
         font-family: var(--font-family);
       }
 
@@ -125,6 +126,7 @@
       font-size: $size-14;
       line-height: 140%;
       gap: $size-8;
+      color: $color-000;
       transition: all 0.2s $ease;
 
       & svg {
@@ -168,6 +170,7 @@
           transition: all 0.2s $ease;
 
           & span {
+            color: $color-000;
             font-family: var(--font-family);
             font-size: $size-16;
           }
@@ -227,6 +230,7 @@
       }
       
       & ._arrow_btn {
+        color: $color-000;
         min-height: $size-36;
 
         & svg {

@@ -63,6 +63,11 @@
       position: $relative;
 
       &:hover {
+      cursor: $none;
+        
+        & img {
+          cursor:$none;
+        }
 
         & .main__showModal_btn {
           opacity: 1;
@@ -78,20 +83,30 @@
     }
 
     & ._main_swipper_btns {
-      --width: 13px;
-      --height: 24px;
+      --width: 60px;
+      --height: 100%;
       width: var(--width);
       height: var(--height);
       min-width: var(--width);
       min-height: var(--height);
       max-width: var(--width);
       max-height: var(--height);
+      top: 0;
 
       &.main-swiper-button-next {
         transform: rotate(180deg);
       }
       
-      & svg {        
+      & svg {    
+        --width: 13px;
+        --height: 24px;
+        width: var(--width);
+        height: var(--height);
+        min-width: var(--width);
+        min-height: var(--height);
+        max-width: var(--width);
+        max-height: var(--height);        
+
         & path {
           transition: all 0.2s $ease;
         }
@@ -136,6 +151,7 @@
   top: 153px;
   right: 146px;
   opacity: 0;
+  cursor: $none;
   pointer-events: $none;
   // transition: all 0.2s $ease; 
 

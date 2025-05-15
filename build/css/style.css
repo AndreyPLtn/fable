@@ -1060,6 +1060,12 @@ a {
 .slider__wrap ._main-slider .main__slider_wrap {
   position: relative;
 }
+.slider__wrap ._main-slider .main__slider_wrap:hover {
+  cursor: none;
+}
+.slider__wrap ._main-slider .main__slider_wrap:hover img {
+  cursor: none;
+}
 .slider__wrap ._main-slider .main__slider_wrap:hover .main__showModal_btn {
   opacity: 1;
   pointer-events: all;
@@ -1071,6 +1077,22 @@ a {
   min-height: var(--swiper-size);
 }
 .slider__wrap ._main-slider ._main_swipper_btns {
+  --width: 60px;
+  --height: 100%;
+  width: var(--width);
+  height: var(--height);
+  min-width: var(--width);
+  min-height: var(--height);
+  max-width: var(--width);
+  max-height: var(--height);
+  top: 0;
+}
+.slider__wrap ._main-slider ._main_swipper_btns.main-swiper-button-next {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.slider__wrap ._main-slider ._main_swipper_btns svg {
   --width: 13px;
   --height: 24px;
   width: var(--width);
@@ -1079,11 +1101,6 @@ a {
   min-height: var(--height);
   max-width: var(--width);
   max-height: var(--height);
-}
-.slider__wrap ._main-slider ._main_swipper_btns.main-swiper-button-next {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
 }
 .slider__wrap ._main-slider ._main_swipper_btns svg path {
   -webkit-transition: all 0.2s ease;
@@ -1113,6 +1130,7 @@ a {
   top: 153px;
   right: 146px;
   opacity: 0;
+  cursor: none;
   pointer-events: none;
 }
 .main__showModal_btn span {
@@ -1282,7 +1300,8 @@ a {
       align-self: flex-start;
 }
 .card__option_item._item_price_details .rassrochka__btn span {
-  font-size: var(--fs-14);
+  font-size: 14px;
+  color: #000000;
   font-family: var(--font-family);
 }
 .card__option_item._item_price_details .rassrochka__btn svg {
@@ -1311,6 +1330,7 @@ a {
   font-size: 14px;
   line-height: 140%;
   gap: 8px;
+  color: #000000;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -1347,6 +1367,7 @@ a {
   transition: all 0.2s ease;
 }
 .card__option_item._item_size .card__size_list .card__size_item .card__size_btn span {
+  color: #000000;
   font-family: var(--font-family);
   font-size: 16px;
 }
@@ -1386,6 +1407,7 @@ a {
   border-color: #000000;
 }
 .card__option_item._item_addCart .card__cart_btn_wrap ._arrow_btn {
+  color: #000000;
   min-height: 36px;
 }
 .card__option_item._item_addCart .card__cart_btn_wrap ._arrow_btn svg {
@@ -2408,6 +2430,7 @@ a {
 }
 .char__acc_btn h3 {
   font-size: 14px;
+  color: #000000;
 }
 .char__acc_btn svg {
   position: relative;
@@ -2646,12 +2669,6 @@ a {
 .fashion__current_slide_link span {
   display: none;
   color: #000000;
-}
-.fashion__current_slide_link:hover {
-  -webkit-filter: drop-shadow(0 2px 8px rgb(0, 0, 0));
-          filter: drop-shadow(0 2px 8px rgb(0, 0, 0));
-  --width: 188px;
-  --height: 38px;
 }
 .fashion__current_slide_link:hover span {
   display: -webkit-box;
@@ -3139,6 +3156,10 @@ a {
   padding-bottom: 0;
 }
 
+.hidden__fullImage_title {
+  display: none;
+}
+
 .hidden__fullImage_body {
   overflow: hidden;
 }
@@ -3222,6 +3243,11 @@ a {
 @media screen and (max-width: 900px) {
   .hidden__fullImage_swipper_wrap {
     display: none;
+  }
+  .hidden__fullImage_title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
   .hidden__fullImage_header {
     position: static;

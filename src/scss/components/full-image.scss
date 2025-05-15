@@ -80,6 +80,10 @@
   padding-bottom: 0;
 }
 
+.hidden__fullImage_title {
+  display: $none;
+}
+
 .hidden__fullImage_body {
   overflow: $hidden;
 }
@@ -176,6 +180,10 @@
 @media screen and (max-width: 900px) {
   .hidden__fullImage_swipper_wrap {
     display: $none;
+  }
+  
+  .hidden__fullImage_title {
+    display: flex;
   }
 
   .hidden__fullImage_header {
