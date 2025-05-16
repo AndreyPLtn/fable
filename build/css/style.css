@@ -482,6 +482,10 @@ a {
   line-height: 140%;
 }
 
+._p_abs {
+  position: absolute;
+}
+
 ._p_rel {
   position: relative;
 }
@@ -1231,6 +1235,12 @@ a {
   .main__showModal_btn {
     display: none;
   }
+  .slider__wrap ._main-slider ._main_swipper_btns {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    --width: 30px;
+  }
 }
 .card__options_wrap {
   gap: 28px;
@@ -1610,6 +1620,11 @@ a {
   width: 100%;
   height: 100%;
 }
+._modal .modal__close._p_abs {
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
 ._modal .modal__wrap {
   width: var(--proc);
   height: var(--proc);
@@ -1665,6 +1680,9 @@ a {
   height: var(--proc);
   -o-object-fit: cover;
      object-fit: cover;
+}
+._modal._map > ._half.stock__map_wrap .modal__close {
+  display: none;
 }
 
 ._overlay {
@@ -2124,6 +2142,11 @@ a {
         -ms-transform: translateY(100%) !important;
             transform: translateY(100%) !important;
   }
+  .hidden__inStock._map > ._half.stock__map_wrap .modal__close {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   .hidden__inStock._show > ._half {
     width: 100%;
   }
@@ -2196,6 +2219,9 @@ a {
     max-height: var(--size);
     fill: #000000;
   }
+  .map__show_list_btn span {
+    color: #000000;
+  }
   .inStock__plawka_btn {
     --wdith: 36px;
     --height: 5px;
@@ -2228,6 +2254,11 @@ a {
   .fullscreen__img_slider_wrap .modal__close {
     top: 24px;
     right: 20px;
+  }
+  .hidden__inStock._map .modal__wrap._semi_show {
+    max-height: 180px;
+    bottom: 0;
+    top: unset;
   }
 }
 @media screen and (max-width: 768px) {
@@ -3068,6 +3099,24 @@ a {
   .choosen__item p {
     font-size: 15px;
   }
+  .fashion__swiper__title {
+    padding-left: 0;
+  }
+  .plawka__choose_size {
+    -webkit-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  .plawka__choose_size._show {
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@media screen and (max-width: 600px) {
+  .fashion__slider_wrap {
+    --width: 343px;
+  }
 }
 ._fullImage_content {
   max-height: 600px;
@@ -3105,7 +3154,7 @@ a {
 }
 .hidden__fullImage_swipper_wrap .fullImage_arrows svg path {
   width: 100%;
-  color: #ffffff;
+  stroke: #ffffff;
 }
 .hidden__fullImage_swipper_wrap .fullImage_arrows::after {
   display: none;
@@ -3120,6 +3169,10 @@ a {
 }
 .hidden__fullImage_swipper_wrap .fullImage_arrows:active {
   background-color: rgb(76, 76, 76);
+}
+
+._fullImage-slider {
+  height: 100%;
 }
 
 .swiper-pagination._fullImage-pagination {
@@ -3169,8 +3222,8 @@ a {
 }
 .fullImage__slider_wrap img {
   max-height: var(--maxHeight);
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .hidden__fullImage_wrap {

@@ -251,7 +251,7 @@
                         </button>
                      </div>
                      <div class="card__cart_btn_wrap _flex_col">
-                        <button class="card__inStock_btn _arrow_btn _flex_sb_center _text_up" type="button" data-modal="modal-inStock-map-list">
+                        <button class="card__inStock_btn _arrow_btn _flex_sb_center _text_up" type="button" data-modal="modal-inStock-stocks-list">
                            <span>где купить</span>
                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M6 12L10 8L6 4" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
@@ -2322,8 +2322,13 @@
             </div>
          </div>
       </aside>
-      <aside class="hidden__inStock _modal" modal-id="modal-inStock-stocks-list">
+      <!-- карты -->
+      <!-- общая карта с картой и списком магазинов -->
+      <aside class="hidden__inStock _map  _modal" modal-id="modal-inStock-stocks-list">
          <div class="_overlay"></div>
+         <div class="stock__map_wrap _half">
+            <img src="./img/details/map.png" alt="">
+         </div>
          <div class="modal__wrap _side">
             <div class="modal__overflow">
                <div class="modal__content">
@@ -2419,13 +2424,19 @@
             </div>
          </div>
       </aside>
-      <!-- карты -->
-      <aside class="hidden__inStock _map _modal" modal-id="modal-inStock-stocks">
+      <!-- карта с кнопкой список -->
+      <aside class="hidden__inStock  _map _modal" modal-id="modal-inStock-stocks">
          <div class="_overlay"></div>
          <div class="stock__map_wrap _half">
+            <button class="modal__close btn _p_abs" type="button" modal-id="modal-close">
+               <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 0.5L25 24.5" stroke="black" />
+                  <path d="M1 24.5L25 0.5" stroke="black" />
+               </svg>
+            </button>
             <img src="./img/details/map.png" alt="">
          </div>
-         <div class="modal__wrap _half _side">
+         <!-- <div class="modal__wrap _half _side">
             <div class="modal__overflow">
                <div class="modal__content">
                   <div class="hidden__inStock_header _modal__header _flex_sb_center">
@@ -2518,7 +2529,7 @@
                   </div>
                </div>
             </div>
-         </div>
+         </div> -->
          <button class="map__show_list_btn btn" type="button">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2 8H2.00667" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -2531,10 +2542,16 @@
             <span>Списком</span>
          </button>
       </aside>
-      <!-- карта с выведенным одним магазином -->
+      <!-- карта с выведенным одним магазином в мобилке -->
       <aside class="hidden__inStock _map _modal" modal-id="modal-inStock-map-list">
          <div class="_overlay"></div>
          <div class="stock__map_wrap _half">
+            <button class="modal__close btn _p_abs" type="button" modal-id="modal-close">
+               <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 0.5L25 24.5" stroke="black" />
+                  <path d="M1 24.5L25 0.5" stroke="black" />
+               </svg>
+            </button>
             <img src="./img/details/map.png" alt="">
          </div>
          <!-- _semi_show к modal__wrap показывает плашку с выбранным магазином на карте-->
@@ -2638,22 +2655,22 @@
                         <div class="swiper-wrapper">
                            <div class="swiper-slide">
                               <div class="fullImage__slider_wrap">
-                                 <img src="./img/slider-imgs/sidePng_1.png" alt="">
+                                 <img src="./img/fashion_slider/fashion_1.png" alt="">
                               </div>
                            </div>
                            <div class="swiper-slide">
                               <div class="fullImage__slider_wrap">
-                                 <img src="./img/slider-imgs/sidePng_2.png" alt="">
+                                 <img src="./img/fashion_slider/fashion_2.png" alt="">
                               </div>
                            </div>
                            <div class="swiper-slide">
                               <div class="fullImage__slider_wrap">
-                                 <img src="./img/slider-imgs/sidePng_1.png" alt="">
+                                 <img src="./img/fashion_slider/fashion_1.png" alt="">
                               </div>
                            </div>
                            <div class="swiper-slide">
                               <div class="fullImage__slider_wrap">
-                                 <img src="./img/slider-imgs/sidePng_2.png" alt="">
+                                 <img src="./img/fashion_slider/fashion_2.png" alt="">
                               </div>
                            </div>
                         </div>

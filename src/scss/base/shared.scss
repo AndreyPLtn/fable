@@ -182,6 +182,10 @@ a {
    line-height: 140%;
 }
 
+._p_abs {
+   position: $absolute;
+}
+
 ._p_rel {
    position: $relative;
 }

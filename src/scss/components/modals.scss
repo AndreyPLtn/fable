@@ -54,6 +54,12 @@
       width: 100%;
       height: 100%;
     }
+
+    &._p_abs {
+      top: $size-20;
+      right: $size-20;
+      z-index: 1;
+    }
   }
 
   & .modal__wrap {
@@ -115,6 +121,10 @@
           width: var(--proc);
           height: var(--proc);
           object-fit: cover;
+        }
+
+        & .modal__close {
+          display: $none;
         }
       }
     }
@@ -618,6 +628,10 @@
 
       &.stock__map_wrap {
           transform: translateY(100%)!important;
+
+        & .modal__close {
+            display: flex;
+          }
         }
       }
     }
@@ -702,6 +716,10 @@
       max-height: var(--size);
       fill: $color-000;
     }
+
+    & span {
+      color: $color-000;
+    }
   }
 
   .inStock__plawka_btn {
@@ -733,6 +751,14 @@
     & .modal__close {
       top: $size-24;
       right: $size-20;
+    }
+  }
+
+  .hidden__inStock._map {
+    & .modal__wrap._semi_show {
+      max-height: 180px;
+      bottom: 0;
+      top: unset;
     }
   }
 }

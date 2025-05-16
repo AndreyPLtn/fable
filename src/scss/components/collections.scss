@@ -391,9 +391,22 @@
       font-size: 15px;
     }
   }
+
+  .fashion__swiper__title {
+    padding-left: 0;
+  }
+
+  .plawka__choose_size {
+    transform: translateY(100%);
+
+    &._show {
+      transform: translateY(0);
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
-
-  
+  .fashion__slider_wrap {
+    --width: 343px;
+  }
 }

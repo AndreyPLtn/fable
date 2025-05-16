@@ -29,7 +29,7 @@
       max-height: var(--height);
       & path {
         width: 100%;
-        color: $color-fff;   
+        stroke: $color-fff;   
       }
     }
 
@@ -53,6 +53,10 @@
       background-color: rgba(76, 76, 76, 1);
     }
   }
+}
+
+._fullImage-slider {
+  height: 100%; 
 }
 
 .swiper-pagination._fullImage-pagination {
@@ -102,7 +106,7 @@
 
   & img {
     max-height: var(--maxHeight);
-    object-fit: $contain;
+    object-fit: $cover;
   }
 }
 

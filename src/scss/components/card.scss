@@ -263,6 +263,13 @@
   .main__showModal_btn {
     display: $none;
   }
+
+  .slider__wrap ._main-slider {
+    & ._main_swipper_btns {
+      justify-content: flex-start;
+      --width: 30px;
+    }
+  }
 }
 
 @media screen and (max-width: 400px) {
