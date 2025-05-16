@@ -2427,6 +2427,7 @@ a {
   font-family: var(--second-family);
   padding: 11px 20px;
   border: 1px solid #8e8e8e;
+  color: #000000;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }

@@ -54,7 +54,7 @@ try {
    fashionSwiper = new Swiper('._fashion-slider', {
       loop: true,
       slidesPerView: "auto",
-      spaceBetween: 20,
+      spaceBetween: 12,
       centerMode: false,
       navigation: true,
       keyboard: true,
@@ -72,16 +72,9 @@ try {
          forceToAxis: true,
       },
       breakpoints: {
-         // 600: {
-         //    navigation: false,
-         //    keyboard: false,
-         //    mousewheel: false,
-         // },
-         // 1024: {
-         //    navigation: true,
-         //    keyboard: true,
-         //    mousewheel: true,
-         // },
+         768: {
+            spaceBetween: 20,
+         },
       }
    });
 } catch (error) {
