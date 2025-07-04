@@ -10,6 +10,13 @@ const initSwiper = () => {
          spaceBetween: 12,
          freeMode: false,
          centerMode: true,
+         slideToClickedSlide: true,
+
+         on: {
+            slideChange(s) {
+               mainSwiper.slideTo(s.activeIndex);
+            },
+         },
       });
    } else if (screenWidth > 600) {
       if (sideSwiper) {
@@ -23,6 +30,11 @@ const initSwiper = () => {
          slideToClickedSlide: true,
          pagination: false,
          navigation: false,
+         on: {
+            slideChange(s) {
+               mainSwiper.slideTo(s.activeIndex);
+            },
+         },
       });
    }
 };
