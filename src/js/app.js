@@ -3,21 +3,21 @@ const initSwiper = () => {
    const screenWidth = window.innerWidth;
 
    if (screenWidth <= 600 && sideSwiper === null) {
-      sideSwiper = new Swiper('._side-slider', {
+      sideSwiper = new Swiper("._side-slider", {
          loop: false,
-         direction: 'horizontal',
+         direction: "horizontal",
          slidesPerView: 5,
          spaceBetween: 12,
          freeMode: false,
          centerMode: true,
       });
    } else if (screenWidth > 600) {
-      if(sideSwiper) {
+      if (sideSwiper) {
          sideSwiper.destroy(true, true);
       }
-      sideSwiper = new Swiper('._side-slider', {
+      sideSwiper = new Swiper("._side-slider", {
          loop: true,
-         direction: 'vertical',
+         direction: "vertical",
          slidesPerView: 5,
          freeMode: false,
          slideToClickedSlide: true,
@@ -27,31 +27,30 @@ const initSwiper = () => {
    }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
    initSwiper();
-   window.addEventListener('resize', initSwiper);
+   window.addEventListener("resize", initSwiper);
 });
 
 let mainSwiper;
 try {
-   mainSwiper = new Swiper('._main-slider', {
+   mainSwiper = new Swiper("._main-slider", {
       loop: true,
       pagination: false,
       slidesPerView: 1,
       spaceBetween: 2,
       navigation: {
-         nextEl: '._main-slider .main-swiper-button-next',
-         prevEl: '._main-slider .main-swiper-button-prev',
+         nextEl: "._main-slider .main-swiper-button-next",
+         prevEl: "._main-slider .main-swiper-button-prev",
       },
    });
-
 } catch (error) {
-   console.error('Error initializing Main Swiper:', error);
+   console.error("Error initializing Main Swiper:", error);
 }
 
 let fashionSwiper;
 try {
-   fashionSwiper = new Swiper('._fashion-slider', {
+   fashionSwiper = new Swiper("._fashion-slider", {
       loop: true,
       slidesPerView: "auto",
       spaceBetween: 11,
@@ -61,8 +60,8 @@ try {
       mousewheel: true,
       // slideToClickedSlide: true,
       navigation: {
-         nextEl: '.fashion__arrow_wrap .swiper-button-next',
-         prevEl: '.fashion__arrow_wrap .swiper-button-prev',
+         nextEl: ".fashion__arrow_wrap .swiper-button-next",
+         prevEl: ".fashion__arrow_wrap .swiper-button-prev",
       },
       keyboard: {
          enabled: true,
@@ -75,23 +74,23 @@ try {
          768: {
             spaceBetween: 20,
          },
-      }
+      },
    });
 } catch (error) {
-   console.error('Error initializing Fashion Swiper:', error);
+   console.error("Error initializing Fashion Swiper:", error);
 }
 
 let fullscreenImages;
 try {
-   fullscreenImages = new Swiper('._fullscreen-slider', {
+   fullscreenImages = new Swiper("._fullscreen-slider", {
       loop: false,
       slidesPerView: 1,
       spaceBetween: 2,
       navigation: false,
       pagination: {
-         el: '.swiper-pagination',
+         el: ".swiper-pagination",
          clickable: true,
-         bulletActiveClass: 'swiper-pagination-bullet-active',
+         bulletActiveClass: "swiper-pagination-bullet-active",
       },
       allowSlidePrev: true,
       allowSlideNext: true,
@@ -99,67 +98,69 @@ try {
       simulateTouch: true,
       breakpoints: {
          600: {
-         pagination: {
-            enabled: false,
-         },
+            pagination: {
+               enabled: false,
+            },
          },
          0: {
-         pagination: {
-            enabled: true,
-         }
-         }
+            pagination: {
+               enabled: true,
+            },
+         },
       },
    });
 } catch (error) {
-   console.error('Error initializing Main Swiper:', error);
+   console.error("Error initializing Main Swiper:", error);
 }
 
 let fullImageSwiper;
 try {
-   fullImageSwiper = new Swiper('._fullImage-slider', {
+   fullImageSwiper = new Swiper("._fullImage-slider", {
       loop: true,
       slidesPerView: 1,
       navigation: {
-         nextEl: '._fullImage-slider .__next',
-         prevEl: '._fullImage-slider .__prev',
+         nextEl: "._fullImage-slider .__next",
+         prevEl: "._fullImage-slider .__prev",
       },
       pagination: {
-         el: '.swiper-pagination._fullImage-pagination',
-         type: 'fraction',
-      }
+         el: ".swiper-pagination._fullImage-pagination",
+         type: "fraction",
+      },
    });
-
 } catch (error) {
-   console.error('Error initializing Main Swiper:', error);
+   console.error("Error initializing Main Swiper:", error);
 }
 
 let sideModalSwiper;
 try {
-   sideModalSwiper = new Swiper('._sideModal-slider', {
+   sideModalSwiper = new Swiper("._sideModal-slider", {
       loop: true,
-      direction: 'vertical',
+      direction: "vertical",
       slidesPerView: 5,
       pagination: false,
       navigation: false,
       // centeredSlides: true,
       slideToClickedSlide: true,
    });
-
 } catch (error) {
-   console.error('Error initializing Side Swiper:', error);
+   console.error("Error initializing Side Swiper:", error);
 }
 
 const showBonusDescription = () => {
-   document.querySelectorAll('.card__bonus_description_btn').forEach(button => {
-      button.addEventListener('click', () => {
-         const modalId = button.dataset.popup;
-         const modal = document.querySelector(`.hidden__bonus_description[popup-id="${modalId}"]`);
-         
-         if (modal) {
-            modal.classList.toggle('_show');
-         }
+   document
+      .querySelectorAll(".card__bonus_description_btn")
+      .forEach((button) => {
+         button.addEventListener("click", () => {
+            const modalId = button.dataset.popup;
+            const modal = document.querySelector(
+               `.hidden__bonus_description[popup-id="${modalId}"]`
+            );
+
+            if (modal) {
+               modal.classList.toggle("_show");
+            }
+         });
       });
-   });
 };
 showBonusDescription();
 
@@ -171,7 +172,7 @@ const toggleModal = () => {
    const modals = document.querySelectorAll("._modal");
    const overlays = document.querySelectorAll("._overlay");
    // const html = document.querySelector('html');
-   const body = document.querySelector('body');
+   const body = document.querySelector("body");
 
    const showClass = "_show";
    const blurClass = "_blur";
@@ -200,15 +201,14 @@ const toggleModal = () => {
    };
 
    const removeAllModals = () => {
-      modals.forEach(modal => safelyRemoveClass(modal, showClass));
+      modals.forEach((modal) => safelyRemoveClass(modal, showClass));
       removeBlur();
       // safelyRemoveClass(html, overflowHiddenClass);
       safelyRemoveClass(body, overflowHiddenClass);
    };
 
-   buttons.forEach(button => {
+   buttons.forEach((button) => {
       button.addEventListener("click", () => {
-
          removeAllModals();
 
          const modalId = button.dataset.modal;
@@ -225,7 +225,7 @@ const toggleModal = () => {
       });
    });
 
-   closeButtons.forEach(button => {
+   closeButtons.forEach((button) => {
       button.addEventListener("click", () => {
          removeAllModals();
       });
@@ -237,7 +237,7 @@ const toggleModal = () => {
       }
    });
 
-   overlays.forEach(overlay => {
+   overlays.forEach((overlay) => {
       overlay.addEventListener("click", (e) => {
          if (e.target === overlay) {
             removeAllModals();
@@ -246,8 +246,12 @@ const toggleModal = () => {
    });
 
    const handleSmallScreenModal = () => {
-      const sliderWrap = document.querySelector(".main__slider_wrap[data-modal='modal-fullscreenSliderImage']");
-      const modal = document.querySelector("[modal-id='modal-fullscreenSliderImage']");
+      const sliderWrap = document.querySelector(
+         ".main__slider_wrap[data-modal='modal-fullscreenSliderImage']"
+      );
+      const modal = document.querySelector(
+         "[modal-id='modal-fullscreenSliderImage']"
+      );
 
       if (!sliderWrap || !modal) return;
 
@@ -281,60 +285,61 @@ const toggleModal = () => {
 toggleModal();
 
 const accordion = () => {
-   const accordionBlocks = document.querySelectorAll('._accordion_block');
-   const accordionButtons = document.querySelectorAll('._accordion_btn');
-   const accordionContents = document.querySelectorAll('._accordion_hidden_content');
+   const accordionBlocks = document.querySelectorAll("._accordion_block");
+   const accordionButtons = document.querySelectorAll("._accordion_btn");
+   const accordionContents = document.querySelectorAll(
+      "._accordion_hidden_content"
+   );
 
    const INIT_ITEM = 0;
 
    let activeBlockIndex = INIT_ITEM;
 
    const setInitialStyles = (content) => {
-      content.style.maxHeight = '0';
-      content.style.overflow = 'hidden';
-      content.style.transition = 'max-height 0.3s ease';
+      content.style.maxHeight = "0";
+      content.style.overflow = "hidden";
+      content.style.transition = "max-height 0.3s ease";
    };
 
    const calculateBlockHeight = (content) => {
-      content.style.maxHeight = 'auto';
-      const height = content.scrollHeight + 'px';
+      content.style.maxHeight = "auto";
+      const height = content.scrollHeight + "px";
       return height;
    };
 
    const hideContent = (content) => {
-      content.style.maxHeight = '0';
+      content.style.maxHeight = "0";
    };
 
    const showContent = (content, height) => {
       content.style.maxHeight = height;
-
    };
 
    const render = () => {
       accordionContents.forEach((content, index) => {
          const block = accordionBlocks[index];
          setInitialStyles(content);
-         block.classList.remove('_active');
+         block.classList.remove("_active");
 
          if (index === activeBlockIndex) {
-         const height = calculateBlockHeight(content);
-         showContent(content, height);
-         block.classList.add('_active');
+            const height = calculateBlockHeight(content);
+            showContent(content, height);
+            block.classList.add("_active");
          } else {
-         hideContent(content);
+            hideContent(content);
          }
       });
    };
 
    const handleButtonClick = (index) => {
       return () => {
-         activeBlockIndex = (activeBlockIndex === index) ? -1 : index;
+         activeBlockIndex = activeBlockIndex === index ? -1 : index;
          render();
       };
    };
 
    accordionButtons.forEach((button, index) => {
-      button.addEventListener('click', handleButtonClick(index));
+      button.addEventListener("click", handleButtonClick(index));
    });
 
    render();
@@ -343,12 +348,12 @@ accordion();
 
 const handleFashionItemClick = () => {
    const selectors = {
-      container: '.fashion__hidden_block',
-      item: '.fashion__hidden_item',
-      button: '.fashion__btn',
-      info: '.fashion__hidden_info',
-      activeClass: '_active',
-      showClass: '_show',
+      container: ".fashion__hidden_block",
+      item: ".fashion__hidden_item",
+      button: ".fashion__btn",
+      info: ".fashion__hidden_info",
+      activeClass: "_active",
+      showClass: "_show",
    };
 
    const containers = document.querySelectorAll(selectors.container);
@@ -358,11 +363,13 @@ const handleFashionItemClick = () => {
    }
 
    const removeActiveStates = (container) => {
-      container.querySelectorAll(`${selectors.button}.${selectors.activeClass}`)
-         .forEach(btn => btn.classList.remove(selectors.activeClass));
+      container
+         .querySelectorAll(`${selectors.button}.${selectors.activeClass}`)
+         .forEach((btn) => btn.classList.remove(selectors.activeClass));
 
-      container.querySelectorAll(`${selectors.info}.${selectors.showClass}`)
-         .forEach(info => info.classList.remove(selectors.showClass));
+      container
+         .querySelectorAll(`${selectors.info}.${selectors.showClass}`)
+         .forEach((info) => info.classList.remove(selectors.showClass));
    };
 
    const toggleVisibility = (button, hiddenInfo, container) => {
@@ -376,8 +383,26 @@ const handleFashionItemClick = () => {
       }
    };
 
-   containers.forEach(container => {
-      container.addEventListener('click', (e) => {
+   containers.forEach((container) => {
+      let containerWidth = container.clientWidth;
+
+      let containerItems = container.querySelectorAll(selectors.item);
+      containerItems.forEach((item) => {
+         // Координаты элемента относительно viewport
+         let itemRect = item.getBoundingClientRect();
+         // Координаты контейнера относительно viewport
+         let containerRect = container.getBoundingClientRect();
+
+         // Вычисляем позицию элемента относительно контейнера
+         let itemLeftRelativeToContainer = itemRect.left - containerRect.left;
+         // let itemTopRelativeToContainer = itemRect.top - containerRect.top;
+         if (itemLeftRelativeToContainer < containerWidth / 2) {
+            item.classList.add("left");
+         } else {
+            item.classList.add("right");
+         }
+      });
+      container.addEventListener("click", (e) => {
          const button = e.target.closest(selectors.button);
          if (!button) return;
 
@@ -391,13 +416,13 @@ const handleFashionItemClick = () => {
       });
    });
 
-   document.addEventListener('click', (e) => {
-      containers.forEach(container => {
+   document.addEventListener("click", (e) => {
+      containers.forEach((container) => {
          const isClickInsideContainer = container.contains(e.target);
          const isClickInsideInfo = e.target.closest(selectors.info);
 
          if (!isClickInsideContainer && !isClickInsideInfo) {
-         removeActiveStates(container);
+            removeActiveStates(container);
          }
       });
    });
@@ -405,10 +430,12 @@ const handleFashionItemClick = () => {
 handleFashionItemClick();
 
 function makeButtonFollowCursor() {
-   const sliderWraps = document.querySelectorAll('.main__slider_wrap');
+   const sliderWraps = document.querySelectorAll(".main__slider_wrap");
 
-   sliderWraps.forEach(sliderWrap => {
-      const followButton = sliderWrap.querySelector('.main__showModal_btn[attr="hoveredPlus"]');
+   sliderWraps.forEach((sliderWrap) => {
+      const followButton = sliderWrap.querySelector(
+         '.main__showModal_btn[attr="hoveredPlus"]'
+      );
 
       if (!followButton) {
          return;
@@ -421,12 +448,12 @@ function makeButtonFollowCursor() {
 
          let x, y;
 
-         if (event.type === 'touchmove') {
-         x = event.touches[0].clientX;
-         y = event.touches[0].clientY;
+         if (event.type === "touchmove") {
+            x = event.touches[0].clientX;
+            y = event.touches[0].clientY;
          } else {
-         x = event.clientX;
-         y = event.clientY;
+            x = event.clientX;
+            y = event.clientY;
          }
 
          const rect = sliderWrap.getBoundingClientRect();
@@ -441,8 +468,9 @@ function makeButtonFollowCursor() {
          const clampedX = Math.max(minX, Math.min(x, maxX));
          const clampedY = Math.max(minY, Math.min(y, maxY));
 
-         followButton.style.left = (clampedX - rect.left - buttonWidth / 2) + 'px';
-         followButton.style.top = (clampedY - rect.top - buttonHeight / 2) + 'px';
+         followButton.style.left =
+            clampedX - rect.left - buttonWidth / 2 + "px";
+         followButton.style.top = clampedY - rect.top - buttonHeight / 2 + "px";
       }
 
       function handleMouseEnter() {
@@ -455,32 +483,33 @@ function makeButtonFollowCursor() {
          followButton.style.opacity = 0;
       }
 
-      sliderWrap.addEventListener('mouseenter', handleMouseEnter);
-      sliderWrap.addEventListener('mouseleave', handleMouseLeave);
+      sliderWrap.addEventListener("mouseenter", handleMouseEnter);
+      sliderWrap.addEventListener("mouseleave", handleMouseLeave);
 
-      sliderWrap.addEventListener('mousemove', handleMove);
-      sliderWrap.addEventListener('touchmove', handleMove);
-      sliderWrap.addEventListener('touchstart', handleMouseEnter);
-      sliderWrap.addEventListener('touchend', handleMouseLeave);
+      sliderWrap.addEventListener("mousemove", handleMove);
+      sliderWrap.addEventListener("touchmove", handleMove);
+      sliderWrap.addEventListener("touchstart", handleMouseEnter);
+      sliderWrap.addEventListener("touchend", handleMouseLeave);
    });
 }
 makeButtonFollowCursor();
 
 function handleCartButtonVisibility() {
-   const cartButton = document.querySelector('.card__addCart_btn[attr="addCart"]');
+   const cartButton = document.querySelector(
+      '.card__addCart_btn[attr="addCart"]'
+   );
    const sizeModal = document.querySelector('[modal-id="modal-plawkaSize"]');
 
    if (!cartButton || !sizeModal) {
       return;
    }
 
-   sizeModal.classList.remove('_show');
+   sizeModal.classList.remove("_show");
 
    function isInInitialPosition() {
       const buttonRect = cartButton.getBoundingClientRect();
       return buttonRect.top > 0;
    }
-
 
    const observer = new IntersectionObserver(
       (entries) => {
@@ -492,10 +521,10 @@ function handleCartButtonVisibility() {
             // console.log("isInInitialPosition:", inInitialPosition);
 
             if (!isIntersecting && !inInitialPosition) {
-               sizeModal.classList.add('_show');
+               sizeModal.classList.add("_show");
                // console.log("Adding _show class");
             } else {
-               sizeModal.classList.remove('_show');
+               sizeModal.classList.remove("_show");
                // console.log("Removing _show class");
             }
          });
@@ -504,7 +533,6 @@ function handleCartButtonVisibility() {
          threshold: 0,
       }
    );
-
 
    observer.observe(cartButton);
 }

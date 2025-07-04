@@ -2788,6 +2788,15 @@ a {
     left: -115px;
   }
 }
+.fashion__hidden_item.left .fashion__hidden_info {
+  left: 0;
+  right: unset;
+}
+.fashion__hidden_item.right .fashion__hidden_info {
+  left: unset;
+  right: 0;
+}
+
 .collection__title h2 {
   font-size: 24px;
 }
