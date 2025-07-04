@@ -409,15 +409,15 @@ const handleFashionItemClick = () => {
          let itemLeftRelativeToContainer = itemRect.left - containerRect.left;
          // let itemTopRelativeToContainer = itemRect.top - containerRect.top;
          let info = item.querySelector(".fashion__hidden_wrap");
+         info.style.minWidth = "unset";
+         info.style.width = "max-content";
          if (itemLeftRelativeToContainer < containerWidth / 2) {
             item.classList.add("left");
-            info.style.minWidth = "unset";
-            info.style.width =
+            info.style.maxWidth =
                containerWidth - itemLeftRelativeToContainer - 10 + "px";
          } else {
             item.classList.add("right");
-            info.style.minWidth = "unset";
-            info.style.width = itemLeftRelativeToContainer - 10 + "px";
+            info.style.maxWidth = itemLeftRelativeToContainer - 10 + "px";
          }
       });
       container.addEventListener("click", (e) => {
