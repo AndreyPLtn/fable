@@ -408,10 +408,16 @@ const handleFashionItemClick = () => {
          // Вычисляем позицию элемента относительно контейнера
          let itemLeftRelativeToContainer = itemRect.left - containerRect.left;
          // let itemTopRelativeToContainer = itemRect.top - containerRect.top;
+         let info = item.querySelector(".fashion__hidden_wrap");
          if (itemLeftRelativeToContainer < containerWidth / 2) {
             item.classList.add("left");
+            info.style.minWidth = "unset";
+            info.style.width =
+               containerWidth - itemLeftRelativeToContainer - 10 + "px";
          } else {
             item.classList.add("right");
+            info.style.minWidth = "unset";
+            info.style.width = itemLeftRelativeToContainer - 10 + "px";
          }
       });
       container.addEventListener("click", (e) => {
