@@ -221,15 +221,17 @@ const toggleModal = () => {
 
    buttons.forEach((button) => {
       button.addEventListener("click", () => {
-         let activeSlideIndex = button
-            .closest(".swiper-slide")
-            .getAttribute("data-swiper-slide-index");
          removeAllModals();
 
          const modalId = button.dataset.modal;
 
          const modal = document.querySelector(`[modal-id="${modalId}"]`);
-         fullscreenImages.slideTo(activeSlideIndex);
+         if (button.closest(".swiper-slide")) {
+            let activeSlideIndex = button
+               .closest(".swiper-slide")
+               .getAttribute("data-swiper-slide-index");
+            fullscreenImages.slideTo(activeSlideIndex);
+         }
 
          safelyAddClass(modal, showClass);
 
