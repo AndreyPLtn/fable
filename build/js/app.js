@@ -14,7 +14,8 @@ const initSwiper = () => {
 
          on: {
             slideChange(s) {
-               mainSwiper.slideTo(s.activeIndex);
+               console.log(s.realIndex);
+               mainSwiper.slideTo(s.realIndex);
             },
          },
       });
@@ -32,7 +33,8 @@ const initSwiper = () => {
          navigation: false,
          on: {
             slideChange(s) {
-               mainSwiper.slideTo(s.activeIndex);
+               console.log(s.realIndex);
+               mainSwiper.slideTo(s.realIndex);
             },
          },
       });
