@@ -1042,7 +1042,7 @@ a {
   max-height: var(--swiper-size);
   min-height: var(--swiper-size);
 }
-.slider__wrap ._side-slider .swiper-slide.swiper-slide-active .side__slider_wrap {
+.slider__wrap ._side-slider .swiper-slide.swiper-slide-thumb-active .side__slider_wrap {
   border-bottom: 1px solid #000000;
 }
 .slider__wrap ._side-slider .side__slider_wrap {

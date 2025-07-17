@@ -19,7 +19,7 @@ const initSwiper = () => {
          spaceBetween: 12,
          freeMode: false,
          centerMode: true,
-         slideToClickedSlide: true,
+         // slideToClickedSlide: true,
          watchSlidesProgress: true,
       });
    } else {
@@ -27,8 +27,9 @@ const initSwiper = () => {
          loop: true,
          direction: "vertical",
          slidesPerView: 5,
+         spaceBetween: 12,
          freeMode: false,
-         slideToClickedSlide: true,
+         // slideToClickedSlide: true,
          pagination: false,
          navigation: false,
          watchSlidesProgress: true,
@@ -51,7 +52,10 @@ const initSwiper = () => {
          },
          on: {
             slideChange(s) {
-               sideSwiper.slideTo(s.realIndex);
+               const realIndex = s.realIndex;
+               if (sideSwiper && realIndex >= 0) {
+                  sideSwiper.slideTo(realIndex);
+               }
             },
          },
       });

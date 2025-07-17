@@ -1,277 +1,271 @@
 .card__section {
-
 }
 
 .card__wrap {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 80px;
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   gap: 80px;
 }
 
 .slider__wrap {
-  --swiper-size: 660px;
-  max-width: 867px;
-  width: 100%;
-  max-height: var(--swiper-size);
-  min-height: var(--swiper-size);
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 80px;
-  overflow: $hidden;
-  position: $sticky;
-  top: 0;
+   --swiper-size: 660px;
+   max-width: 867px;
+   width: 100%;
+   max-height: var(--swiper-size);
+   min-height: var(--swiper-size);
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   gap: 80px;
+   overflow: $hidden;
+   position: $sticky;
+   top: 0;
 
-  ._side-slider {
-    max-width: 77px;
-    width: 100%;
-    max-height: var(--swiper-size);
-    min-height: var(--swiper-size);
-  
-    & .swiper-slide {  
-      &.swiper-slide-active {
-        & .side__slider_wrap {
-          border-bottom: 1px solid $color-000;
-        }
-      }
-    }
-  
-    .side__slider_wrap {
-      cursor: $pointer;
+   ._side-slider {
+      max-width: 77px;
       width: 100%;
-      max-height: 112px;
-      min-height: 112px;
-      height: 100%;
-  
-      & img {
-        object-fit: $contain;
-        padding-bottom: 2px;
-      }
-    }
-  }
-
-  ._main-slider {
       max-height: var(--swiper-size);
       min-height: var(--swiper-size);
 
-    & .swiper-slide {
-  
-    }
-  
-    & .main__slider_wrap {
-      position: $relative;
-
-      &:hover {
-      cursor: $none;
-        
-        & img {
-          cursor:$none;
-        }
-
-        & .main__showModal_btn {
-          opacity: 1;
-          pointer-events: all;
-        }
-      }
-  
-      & img {
-        object-fit: $contain;
-        max-height: var(--swiper-size);
-        min-height: var(--swiper-size);
-      }
-    }
-
-    & ._main_swipper_btns {
-      --width: 60px;
-      --height: 100%;
-      width: var(--width);
-      height: var(--height);
-      min-width: var(--width);
-      min-height: var(--height);
-      max-width: var(--width);
-      max-height: var(--height);
-      top: 0;
-
-      &.main-swiper-button-next {
-        transform: rotate(180deg);
-      }
-      
-      & svg {    
-        --width: 13px;
-        --height: 24px;
-        width: var(--width);
-        height: var(--height);
-        min-width: var(--width);
-        min-height: var(--height);
-        max-width: var(--width);
-        max-height: var(--height);        
-
-        & path {
-          transition: all 0.2s $ease;
-        }
+      & .swiper-slide {
+         &.swiper-slide-thumb-active {
+            & .side__slider_wrap {
+               border-bottom: 1px solid $color-000;
+            }
+         }
       }
 
-      &::after {
-        display: $none;
+      .side__slider_wrap {
+         cursor: $pointer;
+         width: 100%;
+         max-height: 112px;
+         min-height: 112px;
+         height: 100%;
+
+         & img {
+            object-fit: $contain;
+            padding-bottom: 2px;
+         }
+      }
+   }
+
+   ._main-slider {
+      max-height: var(--swiper-size);
+      min-height: var(--swiper-size);
+
+      & .swiper-slide {
       }
 
-      &:hover {
-        & svg {
-        
-          & path {
-            stroke: $color-000;
-          }
-        }
+      & .main__slider_wrap {
+         position: $relative;
+
+         &:hover {
+            cursor: $none;
+
+            & img {
+               cursor: $none;
+            }
+
+            & .main__showModal_btn {
+               opacity: 1;
+               pointer-events: all;
+            }
+         }
+
+         & img {
+            object-fit: $contain;
+            max-height: var(--swiper-size);
+            min-height: var(--swiper-size);
+         }
       }
 
-      &:active {
-        & svg {
-        
-          & path {
-            opacity: 0.8;
-          }
-        }
+      & ._main_swipper_btns {
+         --width: 60px;
+         --height: 100%;
+         width: var(--width);
+         height: var(--height);
+         min-width: var(--width);
+         min-height: var(--height);
+         max-width: var(--width);
+         max-height: var(--height);
+         top: 0;
+
+         &.main-swiper-button-next {
+            transform: rotate(180deg);
+         }
+
+         & svg {
+            --width: 13px;
+            --height: 24px;
+            width: var(--width);
+            height: var(--height);
+            min-width: var(--width);
+            min-height: var(--height);
+            max-width: var(--width);
+            max-height: var(--height);
+
+            & path {
+               transition: all 0.2s $ease;
+            }
+         }
+
+         &::after {
+            display: $none;
+         }
+
+         &:hover {
+            & svg {
+               & path {
+                  stroke: $color-000;
+               }
+            }
+         }
+
+         &:active {
+            & svg {
+               & path {
+                  opacity: 0.8;
+               }
+            }
+         }
       }
-    }
-  }
+   }
 }
 
 .main__showModal_btn {
-  --size: 34px;
-  min-width: var(--size);
-  max-width: var(--size);
-  width: var(--size);
-  min-height: var(--size);
-  max-height: var(--size);
-  height: var(--size);
-  position: $absolute;
-  padding: 9px;
-  background-color: $color-fff;
-  top: 153px;
-  right: 146px;
-  opacity: 0;
-  cursor: $none;
-  pointer-events: $none;
-  // transition: all 0.2s $ease; 
+   --size: 34px;
+   min-width: var(--size);
+   max-width: var(--size);
+   width: var(--size);
+   min-height: var(--size);
+   max-height: var(--size);
+   height: var(--size);
+   position: $absolute;
+   padding: 9px;
+   background-color: $color-fff;
+   top: 153px;
+   right: 146px;
+   opacity: 0;
+   cursor: $none;
+   pointer-events: $none;
+   // transition: all 0.2s $ease;
 
-  & span {
-    --proc: 50%;
-    --proc-neg: -50%;
-    --br: 2px;
-    --width: 12px;
-    --height: 2px;
-    position: $absolute;
-    top: var(--proc);
-    left: var(--proc);
-    transform: translate(var(--proc-neg), var(--proc-neg));
-    width: var(--width);
-    height: var(--height);
-    background-color: $color-000;
-    border-radius: var(--br);
-
-    &::before {
-      content: '';
+   & span {
+      --proc: 50%;
+      --proc-neg: -50%;
+      --br: 2px;
+      --width: 12px;
+      --height: 2px;
       position: $absolute;
       top: var(--proc);
       left: var(--proc);
-      transform: translate(var(--proc-neg), var(--proc-neg)) rotate(90deg);
+      transform: translate(var(--proc-neg), var(--proc-neg));
       width: var(--width);
       height: var(--height);
-      background-color: inherit;
+      background-color: $color-000;
       border-radius: var(--br);
-    }
-  }
 
-  &:active {
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(0, 0, 0, 0.2);
-  }
+      &::before {
+         content: "";
+         position: $absolute;
+         top: var(--proc);
+         left: var(--proc);
+         transform: translate(var(--proc-neg), var(--proc-neg)) rotate(90deg);
+         width: var(--width);
+         height: var(--height);
+         background-color: inherit;
+         border-radius: var(--br);
+      }
+   }
+
+   &:active {
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+         inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+   }
 }
 
 @media screen and (max-width: 1200px) {
-
 }
 
 @media screen and (max-width: 1024px) {
-  .card__wrap {
-    flex-direction: column;
-  }
-  .slider__wrap {
-    gap: 30px;
-    position: $static;
-    top: $unset;
-  }
+   .card__wrap {
+      flex-direction: column;
+   }
+   .slider__wrap {
+      gap: 30px;
+      position: $static;
+      top: $unset;
+   }
 }
 
 @media screen and (max-width: 900px) {
-  .main__showModal_btn {
-    right: 5%;
-  }
+   .main__showModal_btn {
+      right: 5%;
+   }
 }
 
 @media screen and (max-width: 768px) {
-  .card__options_wrap {
-    width: 100%;
-  }
+   .card__options_wrap {
+      width: 100%;
+   }
 
-  .card__wrap {
-    gap: 20px;
-  }
+   .card__wrap {
+      gap: 20px;
+   }
 }
 
 @media screen and (max-width: 600px) {
-  .slider__wrap {
-    flex-direction: column;
-    max-height: 100%;
-    min-height: 100%;
-    gap: 0;
+   .slider__wrap {
+      flex-direction: column;
+      max-height: 100%;
+      min-height: 100%;
+      gap: 0;
 
-    & ._side-slider {
-      padding-top: 15px;
-      max-width: 100%;
-      max-height: 70px;
-      min-height: 70px;
-      order: 1;
+      & ._side-slider {
+         padding-top: 15px;
+         max-width: 100%;
+         max-height: 70px;
+         min-height: 70px;
+         order: 1;
 
-      & .swiper-slide {
-        // width: 34px!important;
+         & .swiper-slide {
+            // width: 34px!important;
+         }
+
+         & .side__slider_wrap {
+            max-height: 50px;
+            min-height: 50px;
+            min-width: 34px;
+            max-width: 34px;
+         }
       }
 
-      & .side__slider_wrap {
-        max-height: 50px;
-        min-height: 50px;
-        min-width: 34px;
-        max-width: 34px;
+      & ._main-slider {
+         max-height: 536px;
+         min-height: 100%;
+         max-width: 100%;
+
+         & .main__slider_wrap {
+            & img {
+               max-height: 536px;
+               min-height: 100%;
+            }
+         }
       }
-    }
+   }
 
-    & ._main-slider {
-        max-height: 536px;
-        min-height: 100%;
-        max-width: 100%;
+   .main__showModal_btn {
+      display: $none;
+   }
 
-      & .main__slider_wrap {
-        
-        & img {
-          max-height: 536px;
-          min-height: 100%;
-        }
+   .slider__wrap ._main-slider {
+      & ._main_swipper_btns {
+         justify-content: flex-start;
+         --width: 30px;
       }
-    }
-  }
-
-  .main__showModal_btn {
-    display: $none;
-  }
-
-  .slider__wrap ._main-slider {
-    & ._main_swipper_btns {
-      justify-content: flex-start;
-      --width: 30px;
-    }
-  }
+   }
 }
 
 @media screen and (max-width: 400px) {
-  
 }
