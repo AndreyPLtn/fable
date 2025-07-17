@@ -1,28 +1,28 @@
 let sideSwiper = null;
+let mainSwiper = null;
+
 const initSwiper = () => {
    const screenWidth = window.innerWidth;
 
-   if (screenWidth <= 600 && sideSwiper === null) {
+   // Уничтожаем предыдущий sideSwiper, если он был
+   if (sideSwiper) {
+      sideSwiper.destroy(true, true);
+      sideSwiper = null;
+   }
+
+   // Создаём новый sideSwiper
+   if (screenWidth <= 600) {
       sideSwiper = new Swiper("._side-slider", {
-         loop: false,
+         loop: true,
          direction: "horizontal",
          slidesPerView: 5,
          spaceBetween: 12,
          freeMode: false,
          centerMode: true,
          slideToClickedSlide: true,
-
-         on: {
-            slideChange(s) {
-               console.log(s.realIndex);
-               mainSwiper.slideTo(s.realIndex);
-            },
-         },
+         watchSlidesProgress: true,
       });
-   } else if (screenWidth > 600) {
-      if (sideSwiper) {
-         sideSwiper.destroy(true, true);
-      }
+   } else {
       sideSwiper = new Swiper("._side-slider", {
          loop: true,
          direction: "vertical",
@@ -31,13 +31,34 @@ const initSwiper = () => {
          slideToClickedSlide: true,
          pagination: false,
          navigation: false,
+         watchSlidesProgress: true,
+      });
+   }
+
+   // Инициализируем mainSwiper ПОСЛЕ sideSwiper
+   if (!mainSwiper) {
+      mainSwiper = new Swiper("._main-slider", {
+         loop: true,
+         pagination: false,
+         slidesPerView: 1,
+         spaceBetween: 2,
+         navigation: {
+            nextEl: "._main-slider .main-swiper-button-next",
+            prevEl: "._main-slider .main-swiper-button-prev",
+         },
+         thumbs: {
+            swiper: sideSwiper,
+         },
          on: {
             slideChange(s) {
-               console.log(s.realIndex);
-               mainSwiper.slideTo(s.realIndex);
+               sideSwiper.slideTo(s.realIndex);
             },
          },
       });
+   } else {
+      // Обновляем thumbs, если mainSwiper уже существует
+      mainSwiper.params.thumbs.swiper = sideSwiper;
+      mainSwiper.thumbs.update();
    }
 };
 
@@ -45,22 +66,72 @@ document.addEventListener("DOMContentLoaded", () => {
    initSwiper();
    window.addEventListener("resize", initSwiper);
 });
+// let sideSwiper = null;
+// const initSwiper = () => {
+//    const screenWidth = window.innerWidth;
 
-let mainSwiper;
-try {
-   mainSwiper = new Swiper("._main-slider", {
-      loop: true,
-      pagination: false,
-      slidesPerView: 1,
-      spaceBetween: 2,
-      navigation: {
-         nextEl: "._main-slider .main-swiper-button-next",
-         prevEl: "._main-slider .main-swiper-button-prev",
-      },
-   });
-} catch (error) {
-   console.error("Error initializing Main Swiper:", error);
-}
+//    if (screenWidth <= 600 && sideSwiper === null) {
+//       sideSwiper = new Swiper("._side-slider", {
+//          loop: false,
+//          direction: "horizontal",
+//          slidesPerView: 5,
+//          spaceBetween: 12,
+//          freeMode: false,
+//          centerMode: true,
+//          slideToClickedSlide: true,
+//          watchSlidesProgress: true,
+//          // on: {
+//          //    slideChange(s) {
+//          //       mainSwiper.slideTo(s.realIndex);
+//          //    },
+//          // },
+//       });
+//    } else if (screenWidth > 600) {
+//       if (sideSwiper) {
+//          sideSwiper.destroy(true, true);
+//       }
+//       sideSwiper = new Swiper("._side-slider", {
+//          loop: true,
+//          direction: "vertical",
+//          slidesPerView: 5,
+//          freeMode: false,
+//          slideToClickedSlide: true,
+//          pagination: false,
+//          navigation: false,
+//          watchSlidesProgress: true,
+
+//          // on: {
+//          //    slideChange(s) {
+//          //       mainSwiper.slideTo(s.realIndex);
+//          //    },
+//          // },
+//       });
+//    }
+// };
+
+// document.addEventListener("DOMContentLoaded", () => {
+//    initSwiper();
+//    window.addEventListener("resize", initSwiper);
+// });
+
+// let mainSwiper;
+// try {
+//    mainSwiper = new Swiper("._main-slider", {
+//       loop: true,
+//       pagination: false,
+//       slidesPerView: 1,
+//       spaceBetween: 2,
+//       navigation: {
+//          nextEl: "._main-slider .main-swiper-button-next",
+//          prevEl: "._main-slider .main-swiper-button-prev",
+//       },
+//       thumbs: {
+//          swiper: sideSwiper,
+//       },
+//    });
+// } catch (error) {
+//    console.error("Error initializing Main Swiper:", error);
+// }
 
 let fashionSwiper;
 try {
